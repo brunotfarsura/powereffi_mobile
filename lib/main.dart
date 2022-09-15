@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:powereffi_mobile/personalData/personalData.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,11 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'PowerEffi',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: "/",
+      routes: {
+        "/": ((context) => const MyHomePage(title: 'My own home page',)), //Screen to start the app
+        "/personalData": (context) => const PersonalData()
+      },
     );
   }
 }
