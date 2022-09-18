@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: "/",
+      initialRoute: "/personalData",
       routes: {
         "/": ((context) => const MyHomePage(title: 'My own home page',)), //Screen to start the app
-        "/personalData": (context) => const PersonalData()
+        "/personalData": (context) => PersonalData()
       },
     );
   }
