@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:powereffi_mobile/personalData/personalData.dart';
+import 'package:powereffi_mobile/personalData/createPersonalData.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/personalData",
       routes: {
-        "/": ((context) => const MyHomePage(title: 'My own home page',)), //Screen to start the app
-        "/personalData": (context) => PersonalData()
+        //"/": ((context) => const MyHomePage(title: 'My own home page',)), //Screen to start the app
+        "/personalData": (context) => CreatePersonalData()
       },
     );
   }

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class PersonalData extends StatelessWidget {
-  PersonalData({super.key});
+import '../model/person.dart';
+
+class CreatePersonalData extends StatelessWidget {
+  CreatePersonalData({super.key});
 
   final Text title = const Text("Cadastro pessoal");
 
@@ -76,11 +78,16 @@ class PersonalData extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      //if (_formKey.currentState!.validate()) {
-                      //  Book book = Book(name: _nameController.text,
-                      //      author: _emailController.text);
-                      //  Navigator.pop(context, book);
-                      //}
+                      if (_formKey.currentState!.validate()) {
+
+                      Person person = Person(
+                          name: _nameController.text,
+                          email: _emailController.text,
+                          phoneNumber: _phoneController.text,
+                          documentNumber: _documentController.text
+                        );
+                        Navigator.pop(context, person);
+                      }
                     },
                     child: const Text('Save'),
                   ),
