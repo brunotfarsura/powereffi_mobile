@@ -17,8 +17,8 @@ class EnergyConsumptionData extends StatelessWidget {
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _groupController = TextEditingController();
   final TextEditingController _subGroupController = TextEditingController();
-  final TextEditingController _classController = TextEditingController();
-  final TextEditingController _subClassController = TextEditingController();
+  final TextEditingController _classDistributionController = TextEditingController();
+  final TextEditingController _subClassDistributionController = TextEditingController();
   final TextEditingController _supplyTypeController = TextEditingController();
   final TextEditingController _tariffModalityController = TextEditingController();
   final TextEditingController _energyConsumptionFirstMonthController = TextEditingController();

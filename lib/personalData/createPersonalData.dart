@@ -67,7 +67,7 @@ class CreatePersonalData extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Document number", labelText: "Phone number"),
+                      hintText: "Document number", labelText: "Document number"),
                   controller: _documentController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
