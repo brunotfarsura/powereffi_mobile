@@ -11,10 +11,20 @@ class CreatePersonalData extends StatelessWidget {
 
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _documentController = TextEditingController();
+  TextEditingController _distributionCompanyNameController = TextEditingController();
+  final TextEditingController _installationNumberController = TextEditingController();
+  final TextEditingController _clientNameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _groupController = TextEditingController();
+  final TextEditingController _subGroupController = TextEditingController();
+  final TextEditingController _classController = TextEditingController();
+  final TextEditingController _subClassController = TextEditingController();
+  final TextEditingController _supplyTypeController = TextEditingController();
+  final TextEditingController _tariffModalityController = TextEditingController();
+  final TextEditingController _energyConsumptionFirstMonthController = TextEditingController();
+  final TextEditingController _energyConsumptionSecondMonthController = TextEditingController();
+  final TextEditingController _energyConsumptionThirdMonthController = TextEditingController();
+  final TextEditingController _energyConsumptionFourthMonthController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +40,16 @@ class CreatePersonalData extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                DropdownButton<String>(items: [],
+                  icon: const Icon(Icons.arrow_downward),
+                  elevation: 16,
+                  
+                  onChanged: (value) => _distributionCompanyNameController=value
+                ),
                 TextFormField(
                   decoration: const InputDecoration(
                       hintText: "Name", labelText: "Name"),
-                  controller: _nameController,
+                  controller: _distributionCompanyNameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Insert full name';
@@ -44,7 +60,7 @@ class CreatePersonalData extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(
                       hintText: "Email", labelText: "Email"),
-                  controller: _emailController,
+                  controller: _installationNumberController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Insert your email';
@@ -55,7 +71,7 @@ class CreatePersonalData extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(
                       hintText: "Phone number", labelText: "Phone number"),
-                  controller: _phoneController,
+                  controller: _clientNameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Insert your phone number';
@@ -66,7 +82,7 @@ class CreatePersonalData extends StatelessWidget {
                 TextFormField(
                   decoration: const InputDecoration(
                       hintText: "Document number", labelText: "Phone number"),
-                  controller: _documentController,
+                  controller: _addressController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Insert your document number';
@@ -81,10 +97,10 @@ class CreatePersonalData extends StatelessWidget {
                       if (_formKey.currentState!.validate()) {
 
                       Person person = Person(
-                          name: _nameController.text,
-                          email: _emailController.text,
-                          phoneNumber: _phoneController.text,
-                          documentNumber: _documentController.text
+                          name: _distributionCompanyNameController.text,
+                          email: _installationNumberController.text,
+                          phoneNumber: _clientNameController.text,
+                          documentNumber: _addressController.text
                         );
                         //Navigator.pop(context, person);
                         Navigator.pushNamed(context, "");
