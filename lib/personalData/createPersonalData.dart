@@ -86,7 +86,8 @@ class CreatePersonalData extends StatelessWidget {
                           phoneNumber: _phoneController.text,
                           documentNumber: _documentController.text
                         );
-                        Navigator.pop(context, person);
+                        //Navigator.pop(context, person);
+                        Navigator.pushNamed(context, "");
                       }
                     },
                     child: const Text('Save'),

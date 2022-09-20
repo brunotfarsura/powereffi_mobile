@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/personalData",
       routes: {
         //"/": ((context) => const MyHomePage(title: 'My own home page',)), //Screen to start the app
-        "/personalData": (context) => CreatePersonalData()
+        "/personalData": (context) => CreatePersonalData(),
+        "/energyConsumptionData": (context) => CreateEnergyConsumptionData()
       },
     );
   }
