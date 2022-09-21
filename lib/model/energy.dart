@@ -15,7 +15,7 @@ class Energy {
   String subClassDistribution;
   String supplyType;
   String tariffModality;
-  List<String> allEnergyConsumption;
+  List<String>? allEnergyConsumption;
 
   Energy({this.id,
     required this.distributionCompanyName,
@@ -28,6 +28,7 @@ class Energy {
     required this.subClassDistribution,
     required this.supplyType,
     required this.tariffModality,
-    required this.allEnergyConsumption
+    //required this.allEnergyConsumption
+    this.allEnergyConsumption
   });
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:powereffi_mobile/energyConsumption/DropDownButtonWidget.dart';
+import 'package:powereffi_mobile/model/energy.dart';
 import 'package:powereffi_mobile/model/person.dart';
 
 class EnergyConsumptionData extends StatelessWidget {
@@ -43,44 +44,99 @@ class EnergyConsumptionData extends StatelessWidget {
                 const DropDownButtonWidget(),
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Name", labelText: "Name"),
-                  controller: _distributionCompanyNameController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Insert full name';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      hintText: "Email", labelText: "Email"),
+                      hintText: "Installation number", labelText: "Installation number"),
                   controller: _installationNumberController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Insert your email';
+                      return 'Insert the installation number';
                     }
                     return null;
                   },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Phone number", labelText: "Phone number"),
+                      hintText: "Client name", labelText: "Client name"),
                   controller: _clientNameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Insert your phone number';
+                      return 'Insert the client name';
                     }
                     return null;
                   },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Document number", labelText: "Phone number"),
+                      hintText: "Insert installation address", labelText: "Insert installation address"),
                   controller: _addressController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Insert your document number';
+                      return 'Insert installation address';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Group", labelText: "Group"),
+                  controller: _groupController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Insert the group';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Subgroup", labelText: "Subgroup"),
+                  controller: _subGroupController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Insert the subgroup';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Class distribution", labelText: "Class distribution"),
+                  controller: _classDistributionController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Insert the class distribution';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Subclass distribution", labelText: "Subclass distribution"),
+                  controller: _subClassDistributionController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Insert the subclass distribution';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Supply type", labelText: "Supply type"),
+                  controller: _supplyTypeController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Insert the supply type';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                      hintText: "Tariff modality", labelText: "Tariff modality"),
+                  controller: _tariffModalityController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Insert the tariff modality';
                     }
                     return null;
                   },
@@ -90,6 +146,19 @@ class EnergyConsumptionData extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        Energy energy = Energy(
+                          distributionCompanyName: _distributionCompanyNameController.text,
+                          installationNumber: _installationNumberController.text,
+                          clientName: _clientNameController.text,
+                          address: _addressController.text,
+                          group: _groupController.text,
+                          subGroup: _subGroupController.text,
+                          classDistribution: _classDistributionController.text,
+                          subClassDistribution: _subClassDistributionController.text,
+                          supplyType: _supplyTypeController.text,
+                          tariffModality: _tariffModalityController.text
+                          //allEnergyConsumption: 
+                        );
 
                       //Navigator.pop(context, person);
                         Navigator.pushNamed(context, "/consumptionProfile");
