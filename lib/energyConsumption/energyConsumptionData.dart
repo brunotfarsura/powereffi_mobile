@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:powereffi_mobile/energyConsumption/DropDownButtonWidget.dart';
-import 'package:powereffi_mobile/model/energy.dart';
+import 'package:powereffi_mobile/model/energyProfile.dart';
 import 'package:powereffi_mobile/model/person.dart';
 
 class EnergyConsumptionData extends StatelessWidget {
@@ -146,7 +146,7 @@ class EnergyConsumptionData extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Energy energy = Energy(
+                        EnergyProfile energy = EnergyProfile(
                           distributionCompanyName: _distributionCompanyNameController.text,
                           installationNumber: _installationNumberController.text,
                           clientName: _clientNameController.text,
