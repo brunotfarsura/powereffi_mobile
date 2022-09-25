@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:powereffi_mobile/energyConsumption/DropDownButtonWidget.dart';
+import 'package:powereffi_mobile/model/energyConsumption.dart';
 import 'package:powereffi_mobile/model/energyProfile.dart';
 import 'package:powereffi_mobile/model/person.dart';
 
 class EnergyConsumptionData extends StatelessWidget {
   EnergyConsumptionData({super.key});
 
-  final Text title = const Text("Cadastro pessoal");
+  final Text title = const Text("Cadastro de Perfil Energético");
 
   final _formKey = GlobalKey<FormState>();
 
@@ -23,15 +24,19 @@ class EnergyConsumptionData extends StatelessWidget {
   final TextEditingController _supplyTypeController = TextEditingController();
   final TextEditingController _tariffModalityController = TextEditingController();
   final TextEditingController _energyConsumptionFirstMonthController = TextEditingController();
+  final TextEditingController _monthOneConsumptionController = TextEditingController();
+  final TextEditingController _yearOneConsumptionController = TextEditingController();
   final TextEditingController _energyConsumptionSecondMonthController = TextEditingController();
+  final TextEditingController _monthTwoConsumptionController = TextEditingController();
+  final TextEditingController _yearTwoConsumptionController = TextEditingController();
   final TextEditingController _energyConsumptionThirdMonthController = TextEditingController();
-  final TextEditingController _energyConsumptionFourthMonthController = TextEditingController();
-
+  final TextEditingController _monthThreeConsumptionController = TextEditingController();
+  final TextEditingController _yearThreeConsumptionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
       return Scaffold(
       appBar: AppBar(
-        title: const Text("Personal data"),
+        title: const Text("Energy profile Data"),
         ),
       body: SingleChildScrollView(
         child: Padding(
@@ -141,12 +146,149 @@ class EnergyConsumptionData extends StatelessWidget {
                     return null;
                   },
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Year of consumption", labelText: "Year of consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _yearOneConsumptionController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the year of energy consumption';
+                          }
+                          return null;
+                        },
+                    )),
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Month of consumption", labelText: "Month of consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _monthOneConsumptionController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the month of energy consumption';
+                          }
+                          return null;
+                        },
+                    )),
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Energy consumption", labelText: "Energy consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _energyConsumptionFirstMonthController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the energy consumption';
+                          }
+                          return null;
+                        },
+                    ))
+                ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Year of consumption", labelText: "Year of consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _yearTwoConsumptionController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the year of energy consumption';
+                          }
+                          return null;
+                        },
+                    )),
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Month of consumption", labelText: "Month of consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _monthTwoConsumptionController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the month of energy consumption';
+                          }
+                          return null;
+                        },
+                    )),
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Energy consumption", labelText: "Energy consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _energyConsumptionSecondMonthController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the energy consumption';
+                          }
+                          return null;
+                        },
+                    ))
+                ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Year of consumption", labelText: "Year of consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _yearThreeConsumptionController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the year of energy consumption';
+                          }
+                          return null;
+                        },
+                    )),
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                        hintText: "Month of consumption", labelText: "Month of consumption"),
+                        keyboardType: TextInputType.number,
+                        controller: _monthThreeConsumptionController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the month of energy consumption';
+                          }
+                          return null;
+                        },
+                    )),
+                    Flexible(child: 
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          hintText: "Energy consumption",
+                          labelText: "Energy consumption"
+                        ),
+                        keyboardType: TextInputType.number,
+                        controller: _energyConsumptionThirdMonthController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Insert the energy consumption';
+                          }
+                          return null;
+                        },
+                    ))
+                ]),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        EnergyProfile energy = EnergyProfile(
+                        EnergyProfile energyProfile = EnergyProfile(
                           distributionCompanyName: _distributionCompanyNameController.text,
                           installationNumber: _installationNumberController.text,
                           clientName: _clientNameController.text,
@@ -160,8 +302,26 @@ class EnergyConsumptionData extends StatelessWidget {
                           //allEnergyConsumption: 
                         );
 
-                      //Navigator.pop(context, person);
-                        Navigator.pushNamed(context, "/consumptionProfile");
+                        EnergyConsumption energyConsumption1 = EnergyConsumption(
+                          profileId: energyProfile.id!,
+                          month: int.parse(_yearOneConsumptionController.text),
+                          year: int.parse(_monthOneConsumptionController.text),
+                          energyConsumption: int.parse(_energyConsumptionFirstMonthController.text));
+
+                        EnergyConsumption energyConsumption2 = EnergyConsumption(
+                          profileId: energyProfile.id!,
+                          month: int.parse(_yearOneConsumptionController.text),
+                          year: int.parse(_monthOneConsumptionController.text),
+                          energyConsumption: int.parse(_energyConsumptionFirstMonthController.text));
+
+                        EnergyConsumption energyConsumption3 = EnergyConsumption(
+                          profileId: energyProfile.id!,
+                          month: int.parse(_yearOneConsumptionController.text),
+                          year: int.parse(_monthOneConsumptionController.text),
+                          energyConsumption: int.parse(_energyConsumptionFirstMonthController.text));
+                        
+                        Navigator.pop(context, energyProfile);
+                        //Navigator.pushNamed(context, "/consumptionProfile");
                       }
                     },
                     child: const Text('Save'),

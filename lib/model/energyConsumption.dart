@@ -18,6 +18,11 @@ class EnergyConsumption {
 
   final int month;
   final int year;
+  final int energyConsumption;
 
-  EnergyConsumption({this.id, required this.profileId, required this.month, required this.year});
+  EnergyConsumption({this.id,
+  required this.profileId,
+  required this.month,
+  required this.year,
+  required this.energyConsumption});
 }
