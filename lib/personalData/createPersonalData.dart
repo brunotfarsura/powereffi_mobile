@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:powereffi_mobile/energyConsumption/DropDownButtonWidget.dart';
 
 import '../model/person.dart';
 
@@ -32,7 +33,8 @@ class CreatePersonalData extends StatelessWidget {
               children: <Widget>[
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Name", labelText: "Name"),
+                      hintText: "Name",
+                      labelText: "Name"),
                   controller: _nameController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -65,7 +67,7 @@ class CreatePersonalData extends StatelessWidget {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      hintText: "Document number", labelText: "Phone number"),
+                      hintText: "Document number", labelText: "Document number"),
                   controller: _documentController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -87,7 +89,7 @@ class CreatePersonalData extends StatelessWidget {
                           documentNumber: _documentController.text
                         );
                         //Navigator.pop(context, person);
-                        Navigator.pushNamed(context, "");
+                        Navigator.pushNamed(context, "/energyConsumptionData");
                       }
                     },
                     child: const Text('Save'),

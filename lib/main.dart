@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:powereffi_mobile/energyConsumption/energyConsumptionData.dart';
 import 'package:powereffi_mobile/personalData/createPersonalData.dart';
 
 void main() {
@@ -13,13 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PowerEffi',
       theme: ThemeData(
+        brightness:Brightness.dark,
         primarySwatch: Colors.blue,
       ),
-      initialRoute: "/personalData",
+      initialRoute: "/energyConsumptionData",
       routes: {
         //"/": ((context) => const MyHomePage(title: 'My own home page',)), //Screen to start the app
         "/personalData": (context) => CreatePersonalData(),
-        "/energyConsumptionData": (context) => CreateEnergyConsumptionData()
+        "/energyConsumptionData": (context) => EnergyConsumptionData()
       },
     );
   }
