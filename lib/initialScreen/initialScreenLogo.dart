@@ -10,25 +10,27 @@ class InitialScreenLogo extends StatefulWidget {
 }
 
 class _InitialScreenLogoState extends State<InitialScreenLogo> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: widget.title,
-        actions: [
-          IconButton(
-              icon: const Icon(Icons.add_circle),
-              onPressed: () {
-                Navigator.pushNamed(context, "/personalData");
-              })
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Image.asset("images/powerEffiLogo.jpeg",
-          fit: BoxFit.fill),
-      )
-    );
+        appBar: AppBar(
+          title: widget.title,
+          actions: [
+            IconButton(
+                icon: const Icon(Icons.add_circle),
+                onPressed: () {
+                  Navigator.pushNamed(context, "/personalData");
+                }),
+            IconButton(
+                icon: const Icon(Icons.arrow_back_ios),
+                onPressed: () {
+                  Navigator.pushNamed(context, "/chartConsumptionScreen");
+                })
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Image.asset("images/powerEffiLogo.jpeg", fit: BoxFit.fill),
+        ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:powereffi_mobile/chartConsumption/chartConsumptionScreen.dart';
 import 'package:powereffi_mobile/energyConsumption/energyConsumptionData.dart';
 import 'package:powereffi_mobile/initialScreen/initialScreenLogo.dart';
 import 'package:powereffi_mobile/personalData/createPersonalData.dart';
@@ -15,14 +16,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PowerEffi',
       theme: ThemeData(
-        brightness:Brightness.dark,
+        brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/home",
       routes: {
         "/home": (context) => const InitialScreenLogo(),
         "/personalData": (context) => CreatePersonalData(),
-        "/energyConsumptionData": (context) => EnergyConsumptionData()
+        "/energyConsumptionData": (context) => EnergyConsumptionData(),
+        "/chartConsumptionScreen": (context) => const ChartConsumptionScreen()
       },
     );
   }
