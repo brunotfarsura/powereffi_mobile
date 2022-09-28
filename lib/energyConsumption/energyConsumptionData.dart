@@ -310,18 +310,18 @@ class EnergyConsumptionData extends StatelessWidget {
 
                         EnergyConsumption energyConsumption2 = EnergyConsumption(
                           profileId: energyProfile.id!,
-                          month: int.parse(_yearOneConsumptionController.text),
-                          year: int.parse(_monthOneConsumptionController.text),
-                          energyConsumption: int.parse(_energyConsumptionFirstMonthController.text));
+                          month: int.parse(_yearTwoConsumptionController.text),
+                          year: int.parse(_monthTwoConsumptionController.text),
+                          energyConsumption: int.parse(_energyConsumptionSecondMonthController.text));
 
                         EnergyConsumption energyConsumption3 = EnergyConsumption(
                           profileId: energyProfile.id!,
-                          month: int.parse(_yearOneConsumptionController.text),
-                          year: int.parse(_monthOneConsumptionController.text),
-                          energyConsumption: int.parse(_energyConsumptionFirstMonthController.text));
+                          month: int.parse(_yearThreeConsumptionController.text),
+                          year: int.parse(_monthThreeConsumptionController.text),
+                          energyConsumption: int.parse(_energyConsumptionThirdMonthController.text));
                         
-                        Navigator.pop(context, energyProfile);
-                        //Navigator.pushNamed(context, "/consumptionProfile");
+                        //Navigator.pop(context, energyProfile);
+                        Navigator.pushNamed(context, "/home", arguments: energyProfile);
                       }
                     },
                     child: const Text('Save'),
