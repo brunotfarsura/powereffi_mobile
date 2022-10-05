@@ -125,26 +125,38 @@ class _$EnergyConsumptionDao extends EnergyConsumptionDao {
     this.database,
     this.changeListener,
   )   : _queryAdapter = QueryAdapter(database),
-        _energyConsumptionInsertionAdapter = InsertionAdapter(
+        _energyProfileInsertionAdapter = InsertionAdapter(
             database,
-            'ENERGY_CONSUMPTION',
-            (EnergyConsumption item) => <String, Object?>{
+            'ENERGY_PROFILE',
+            (EnergyProfile item) => <String, Object?>{
                   'id': item.id,
-                  'profile_id': item.profileId,
-                  'month': item.month,
-                  'year': item.year,
-                  'energyConsumption': item.energyConsumption
+                  'distributionCompanyName': item.distributionCompanyName,
+                  'installationNumber': item.installationNumber,
+                  'clientName': item.clientName,
+                  'address': item.address,
+                  'group': item.group,
+                  'subGroup': item.subGroup,
+                  'classDistribution': item.classDistribution,
+                  'subClassDistribution': item.subClassDistribution,
+                  'supplyType': item.supplyType,
+                  'tariffModality': item.tariffModality
                 }),
-        _energyConsumptionDeletionAdapter = DeletionAdapter(
+        _energyProfileDeletionAdapter = DeletionAdapter(
             database,
-            'ENERGY_CONSUMPTION',
+            'ENERGY_PROFILE',
             ['id'],
-            (EnergyConsumption item) => <String, Object?>{
+            (EnergyProfile item) => <String, Object?>{
                   'id': item.id,
-                  'profile_id': item.profileId,
-                  'month': item.month,
-                  'year': item.year,
-                  'energyConsumption': item.energyConsumption
+                  'distributionCompanyName': item.distributionCompanyName,
+                  'installationNumber': item.installationNumber,
+                  'clientName': item.clientName,
+                  'address': item.address,
+                  'group': item.group,
+                  'subGroup': item.subGroup,
+                  'classDistribution': item.classDistribution,
+                  'subClassDistribution': item.subClassDistribution,
+                  'supplyType': item.supplyType,
+                  'tariffModality': item.tariffModality
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -153,9 +165,9 @@ class _$EnergyConsumptionDao extends EnergyConsumptionDao {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<EnergyConsumption> _energyConsumptionInsertionAdapter;
+  final InsertionAdapter<EnergyProfile> _energyProfileInsertionAdapter;
 
-  final DeletionAdapter<EnergyConsumption> _energyConsumptionDeletionAdapter;
+  final DeletionAdapter<EnergyProfile> _energyProfileDeletionAdapter;
 
   @override
   Future<List<EnergyConsumption>> findAll() async {
@@ -169,15 +181,14 @@ class _$EnergyConsumptionDao extends EnergyConsumptionDao {
   }
 
   @override
-  Future<int> insertEnergyConsumption(EnergyConsumption energyConsumption) {
-    return _energyConsumptionInsertionAdapter.insertAndReturnId(
-        energyConsumption, OnConflictStrategy.abort);
+  Future<int> insertEnergyConsumption(EnergyProfile energy) {
+    return _energyProfileInsertionAdapter.insertAndReturnId(
+        energy, OnConflictStrategy.abort);
   }
 
   @override
-  Future<int> deleteEnergyConsumption(EnergyConsumption energyConsumption) {
-    return _energyConsumptionDeletionAdapter
-        .deleteAndReturnChangedRows(energyConsumption);
+  Future<int> deleteEnergyConsumption(EnergyProfile energy) {
+    return _energyProfileDeletionAdapter.deleteAndReturnChangedRows(energy);
   }
 }
 
