@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:powereffi_mobile/dao/energyConsumptionDao.dart';
+import 'package:powereffi_mobile/dao/energyProfileDao.dart';
+import 'package:powereffi_mobile/database/appDatabase.dart';
 import 'package:powereffi_mobile/energyConsumption/DropDownButtonWidget.dart';
 import 'package:powereffi_mobile/model/energyConsumption.dart';
 import 'package:powereffi_mobile/model/energyProfile.dart';
 import 'package:powereffi_mobile/model/person.dart';
 
-class EnergyConsumptionData extends StatelessWidget {
-  EnergyConsumptionData({super.key});
+class EnergyConsumptionData extends StatefulWidget {
+  const EnergyConsumptionData({super.key});
 
-  final Text title = const Text("Cadastro de Perfil Energético");
+    final Text title = const Text("Cadastro de Perfil Energético");
+
+  @override
+  State<EnergyConsumptionData> createState() => _EnergyConsumptionDataState();
+}
+
+class _EnergyConsumptionDataState extends State<EnergyConsumptionData> {
+
+  EnergyProfileDao? energyProfileDao;
+  EnergyConsumptionDao? energyConsumptionDao;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -32,6 +44,7 @@ class EnergyConsumptionData extends StatelessWidget {
   final TextEditingController _energyConsumptionThirdMonthController = TextEditingController();
   final TextEditingController _monthThreeConsumptionController = TextEditingController();
   final TextEditingController _yearThreeConsumptionController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
       return Scaffold(
@@ -286,7 +299,7 @@ class EnergyConsumptionData extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         EnergyProfile energyProfile = EnergyProfile(
                           distributionCompanyName: _distributionCompanyNameController.text,
@@ -299,29 +312,42 @@ class EnergyConsumptionData extends StatelessWidget {
                           subClassDistribution: _subClassDistributionController.text,
                           supplyType: _supplyTypeController.text,
                           tariffModality: _tariffModalityController.text
-                          //allEnergyConsumption: 
                         );
 
+                        final database = await $FloorAppDatabase
+                          .databaseBuilder("app_floor_database.db")
+                          .build();
+
+                        energyProfileDao = database.energyProfileDao;
+                        int energyProfileId = energyProfileDao?.insertEnergyProfile(energyProfile) as int;
+
                         EnergyConsumption energyConsumption1 = EnergyConsumption(
-                          profileId: energyProfile.id!,
+                          profileId: energyProfileId,
                           month: int.parse(_yearOneConsumptionController.text),
                           year: int.parse(_monthOneConsumptionController.text),
                           energyConsumption: int.parse(_energyConsumptionFirstMonthController.text));
 
+                        energyConsumptionDao = database.energyConsumptionDao;
+                        energyConsumptionDao?.insertEnergyConsumption(energyConsumption1);
+
                         EnergyConsumption energyConsumption2 = EnergyConsumption(
-                          profileId: energyProfile.id!,
+                          profileId: energyProfileId,
                           month: int.parse(_yearTwoConsumptionController.text),
                           year: int.parse(_monthTwoConsumptionController.text),
                           energyConsumption: int.parse(_energyConsumptionSecondMonthController.text));
 
+                        energyConsumptionDao?.insertEnergyConsumption(energyConsumption2);
+
                         EnergyConsumption energyConsumption3 = EnergyConsumption(
-                          profileId: energyProfile.id!,
+                          profileId: energyProfileId,
                           month: int.parse(_yearThreeConsumptionController.text),
                           year: int.parse(_monthThreeConsumptionController.text),
                           energyConsumption: int.parse(_energyConsumptionThirdMonthController.text));
+
+                        energyConsumptionDao?.insertEnergyConsumption(energyConsumption3);
                         
                         //Navigator.pop(context, energyProfile);
-                        Navigator.pushNamed(context, "/home", arguments: energyProfile);
+                        Navigator.pushNamed(context, "/home");
                       }
                     },
                     child: const Text('Save'),
