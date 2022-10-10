@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/home": (context) => const InitialScreenLogo(),
         "/personalData": (context) => CreatePersonalData(),
-        "/energyConsumptionData": (context) => EnergyConsumptionData(),
+        "/energyConsumptionData": (context) => const EnergyConsumptionData(),
         "/chartConsumptionScreen": (context) => const ChartConsumptionScreen()
       },
     );
